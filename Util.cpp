@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b6363fc01fedac4aa03da172c3fbab070e13c17734f1f21cf5a34d4e3092f020
-size 243
+#ifndef UTIL_CPP_
+#define UTIL_CPP_
+
+#include "Util.h"
+
+string extractFilename(const char* filename){
+	string name(filename);
+	int pos=name.find_last_of('.');
+
+	return name.substr(0, pos);
+}
+
+void quit(){
+	system("pause");
+	exit(0);
+}
+
+#endif

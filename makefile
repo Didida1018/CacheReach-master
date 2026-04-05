@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b197c89b76c2fc341353ec96a865ac1e49bed4e26b361c261a6d6910519380e
-size 392
+CC       = g++
+CPPFLAGS = -Wno-deprecated -O3 -c -m64 -std=c++11 -fopenmp
+LDFLAGS  = -O3 -fopenmp
+SOURCES  = main.cpp Util.cpp Graph.cpp
+OBJECTS  = $(SOURCES:.cpp=.o)
+EXECUTABLE = CacheReach  
+
+.PHONY: all clean
+
+all: $(EXECUTABLE)
+	rm -f $(OBJECTS)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+%.o: %.cpp
+	$(CC) $(CPPFLAGS) $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE)
