@@ -1,3 +1,7 @@
+To get data and query
+git lfs install
+git clone https://github.com/Didida1018/CacheReach-master.git
+
 To compile:
 make
 
